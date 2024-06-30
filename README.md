@@ -1,2 +1,3 @@
 # chatty_blog
-Educational solution for testing purposes only
+Here could find you a automation testing framework.
+This is an educational solution for testing purposes only
