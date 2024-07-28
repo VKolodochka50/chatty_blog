@@ -1,13 +1,15 @@
 package de.telran;
 
-import org.openqa.selenium.WebDriver;
+import de.telran.utils.ConfigProvider;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public LoginPage() {
+        driver.get(ConfigProvider.URL);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(name = "email")
@@ -50,22 +52,32 @@ public class LoginPage extends BasePage{
         return emailError.getText();
     }
 
-    public String passwordErrorText(){
+    public String passwordErrorText() {
         return passwordError.getText();
+    }
+
+    public LoginPage checkLoginValidation(String emailValue){
+        emailField.sendKeys(emailValue);
+        emailError.getText();
+        return this;
     }
 
     public RegistrationPage clickSignUpButton() {
         signUpTopLink.click();
-        return new RegistrationPage(driver);
+        return new RegistrationPage();
     }
 
     public UserHomePage loginAsUser() {
         loginButton.click();
-        return new UserHomePage(driver);
+        return new UserHomePage();
     }
 
     public AdminConsolePage loginAsAdmin() {
         loginButton.click();
-        return new AdminConsolePage(driver);
+        /*if (loginError.isDisplayed()) {
+            //Call logger, get error text and write appropriate message to console
+            driver.quit();
+        }*/
+        return new AdminConsolePage();
     }
 }
