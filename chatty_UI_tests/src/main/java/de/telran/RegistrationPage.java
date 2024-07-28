@@ -1,15 +1,14 @@
 package de.telran;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class RegistrationPage extends BasePage {
 
-    public RegistrationPage(WebDriver driver) {
+ /*   public RegistrationPage(WebDriver driver) {
         super(driver);
     }
-
+*/
     @FindBy(xpath = ".//a[@href=\"/login\"]")
     private WebElement loginLink;
 
@@ -27,6 +26,7 @@ public class RegistrationPage extends BasePage {
 
     @FindBy(xpath = ".//select")
     private WebElement userTypeSelector;
+
 
 
 }
